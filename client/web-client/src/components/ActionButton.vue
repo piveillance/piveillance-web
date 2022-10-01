@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import WS from '../ws'
     import config from '../config'
+    import addScore from './ReportScreen.vue'
 </script>
 
 <script lang="ts">
@@ -15,6 +16,7 @@
             color: String,
             textContent: String,
             propsId: Number,
+            score: Number,
         },
         methods: {
             action() {
@@ -43,6 +45,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+
+    .container:hover {
+        scale: 105%;
     }
 
     .green {
@@ -57,11 +65,11 @@
         grid-column-end: 3; */
     }
 
-    .green.disabled {
-        background-color: #166336
+    .green:hover {
+        background-color: #27aa5d;
     }
 
-    .red.disabled {
-        background-color: #882d23;
+    .red:hover {
+        background-color: #c54233;
     }
 </style>

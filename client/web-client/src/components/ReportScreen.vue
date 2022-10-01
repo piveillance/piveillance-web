@@ -45,8 +45,7 @@ import config from '../config'
     export default {
         data() {
             return {
-                score: this.score,
-                rank: this.rank,
+                scoreData: 800,
             }
         },
         props: {
@@ -55,9 +54,13 @@ import config from '../config'
             rank: Number,
         },
         methods: {
-            setNewScore(newScore: number) {
-                this.score = newScore;
-            }
+            // addScore(n: number) {
+            //     if (this.scoreData) {
+            //         this.scoreData += n;
+            //     } else {
+            //         this.scoreData = n;
+            //     }
+            // }
         }
     }
 </script>
@@ -65,20 +68,20 @@ import config from '../config'
 <template>
     <div class="wrapper">
         <div class="top">
-            <div class="username" :style="{backgroundColor: getColour(score)}">{{username}}</div>
-            <div class="score" :style="{color: getColour(score)}">{{score}}</div>
-            <div class="rank" :style="{color: getColour(score)}">#{{rank}}</div>
+            <div class="username" :style="{backgroundColor: getColour(scoreData)}">{{username}}</div>
+            <div class="score" :style="{color: getColour(scoreData)}">{{scoreData}}</div>
+            <div class="rank" :style="{color: getColour(scoreData)}">#{{rank}}</div>
         </div>
         <div class="bottom">
             <div class="bottomGrid">
-                <ActionButton id="0" color="green" textContent="Save someone's life" />
-                <ActionButton id="1" color="red" textContent="Commit murder" />
-                <ActionButton id="2" color="green" textContent="Buy your friend a car" />
-                <ActionButton id="3" color="red" textContent="Steal a car" />
-                <ActionButton id="4" color="green" textContent="Help a stranger" />
-                <ActionButton id="5" color="red" textContent="Refuse to help someone" />
-                <ActionButton id="6" color="green" textContent="Feed a street cat" />
-                <ActionButton id="7" color="red" textContent="Ignore a hungry cat" />
+                <ActionButton id="0" color="green" textContent="Save someone's life" @click="scoreData = Math.min(scoreData + 300, 1000)" />
+                <ActionButton id="1" color="red" textContent="Commit murder" @click="scoreData = Math.max(scoreData - 300, 0)"  />
+                <ActionButton id="2" color="green" textContent="Buy your friend a car" @click="scoreData = Math.min(scoreData + 150, 1000)"  />
+                <ActionButton id="3" color="red" textContent="Steal a car" @click="scoreData = Math.max(scoreData - 150, 0)"  />
+                <ActionButton id="4" color="green" textContent="Help a stranger" @click="scoreData = Math.min(scoreData + 80, 1000)" />
+                <ActionButton id="5" color="red" textContent="Refuse to help someone" @click="scoreData = Math.max(scoreData - 80, 0)"  />
+                <ActionButton id="6" color="green" textContent="Feed a street cat" @click="scoreData = Math.min(scoreData + 20, 1000)"  />
+                <ActionButton id="7" color="red" textContent="Ignore a hungry cat" @click="scoreData = Math.max(scoreData - 20, 0)"  />
             </div>
         </div>
     </div>

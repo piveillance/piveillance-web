@@ -8,7 +8,7 @@
 </script>
 
 <template>
-  <ReportScreen username="Citizen69" :score=420 :rank=77 />
+  <ReportScreen username="Citizen69" :score=400 :rank=77 />
 </template>
 
 <style scoped>
