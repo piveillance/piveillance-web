@@ -1,14 +1,9 @@
 <script setup lang="ts">
     import WS from '../ws'
+    import config from '../config'
 </script>
 
 <script lang="ts">
-
-    const action = () => {
-        console.log("The button has being pressed")
-
-        WS.on
-    }
 
     export default {
         data() {
@@ -19,11 +14,13 @@
         props: {
             color: String,
             textContent: String,
-            scoreChange: Number,
-            timeout: Number,
+            propsId: Number,
         },
         methods: {
-            action
+            action() {
+                console.log(`Button ${this.propsId} pressed`)
+                WS.send(`${config.discordId} ${this.propsId}`)
+            }
         }
     }
 </script>
